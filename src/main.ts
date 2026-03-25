@@ -14,6 +14,11 @@ const SDK_CONFIG = {
   environment: 'local',
   framework: 'nestjs',
   projectPaths: [__dirname],
+  repository: {
+    owner: 'rscanesilva',
+    name: 'exception-intelligence-nestjs-sample',
+    branch: 'main',
+  },
 };
 
 @Module({ controllers: [AppController] })
