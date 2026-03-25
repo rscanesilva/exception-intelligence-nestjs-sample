@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { BadRequestException, Controller, Get, Query } from '@nestjs/common';
 
 @Controller('test')
 export class AppController {
@@ -25,7 +25,11 @@ export class AppController {
   /** GET /test/custom  → custom error with request context */
   @Get('custom')
   customError(@Query('user') user: string) {
-    if (!user) throw new Error(`User is required — received: ${user}`);
+    if (!user) {
+      throw new BadRequestException(
+        `User is required — please provide a 'user' query parameter. Received: ${user}`
+      );
+    }
     return { user };
   }
 }
